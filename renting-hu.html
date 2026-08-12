@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="hu"><head>
+
+
+
+
+
+
+
+
+
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>PDS - HomeSecurity Orb - Bérlés</title><meta content="Psyke Phaeton" name="author"><meta content="HomeSecurity Orb Dokumentáció" name="description"><link rel="stylesheet" href="psykes.css" type="text/css" title="Dark"><link rel="alternate stylesheet" href="bright.css" type="text/css" title="Bright"></head><body alink="#ff6600" link="#ff6600" vlink="#ff6600">
+<table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; width: 33%; white-space: nowrap;">
+<small><a href="/">Kezdőlap</a> &gt; <a href="index-hu.html">HSOrb Dokumentáció</a> &gt; <span style="color: rgb(255, 102, 0);">
+</span><span style="color: rgb(255, 102, 0);" editable="true" id="PageTitle1">Bérlés</span></small></td>
+<td style="vertical-align: top; width: 33%; white-space: nowrap; text-align: center;"><small><span style="font-family: Times New Roman,Times,serif; color: rgb(255, 102, 0);">PSYKE'S DEFENSE SYSTEMS</span>
+<span style="color: rgb(255, 102, 0);">®</span></small><br></td>
+<td style="vertical-align: top; width: 33%; white-space: nowrap; text-align: right; color: rgb(255, 102, 0);"><small><a href="/">Bolt</a></small></td></tr></tbody>
+</table>
+<div style="text-align: right;"><small><a href="renting.html">English version</a></small></div>
+<h1>PDS HomeSecurity<small>&#8482;</small> Orb Dokumentáció</h1>
+<h2><span editable="true" id="PageTitle">Bérelt föld és lakások
+</span></h2>
+<h3>Bérelt föld és lakások</h3>
+<span editable="true" id="Body1"></span>A 9.008-as verzió óta az Orb
+képes érzékelni a földhatárokat. Ez lehetővé teszi, hogy a bérbeadók a HS Orb-bal
+egy adott földparcellát védjenek anélkül, hogy a szomszédos parcellát érintenék.<br>
+<br>
+Ezt a funkciót az Other Land Safe beállítás engedélyezi, ami a menükben a SETTINGS / Weapon / OtherLand alatt található.<br>
+<br>
+Tapasztaltabb felhasználók a "HomeSecurity Settings" notecard szerkesztésével is beállíthatják: <span style="color: rgb(51, 204, 255);">other_land_safe=1</span>, majd a <span style="color: rgb(51, 204, 0);">/8reset</span> parancs használatával.<br>
+<br>
+<h4><img style="width: 40px; height: 36px;" alt="Figyelmeztetés:" src="images/warn40px.png" align="middle">&nbsp;A <span style="color: rgb(51, 204, 0);">/8reset</span> parancs visszaállítja az Orb-ot a Settings notecard alapértékeire, de a nevek nem vesznek el.</h4>
+
+<br>
+Ez a Settings notecard funkció felhasználható arra, hogy: <br>
+<ul>
+  <li>egy Settings notecardot több Orb-ba is bemásolj, majd <span style="color: rgb(51, 204, 0);">/8reset</span> paranccsal alkalmazd, gyorsabb beállítás érdekében.</li>
+  <li>a <span style="color: rgb(51, 204, 0);">/8reset</span> paranccsal az Orb-ot visszaállíthatod egy bérlő távozása után is (<span style="color: red;">a neveket menükön keresztül kell eltávolítani</span>).</li>
+</ul>
+<h3>Lakóparkok / társasházak</h3>
+Ezen utasítások követése előtt frissítened kell a HS Orb-ot legalább a 9.010-es verzióra.<br>
+<br>
+A lakásoknak (apartmanoknak) van egy plusz problémájuk, mégpedig hogy minden
+lakásnak lehetnek szomszédos lakásai fölötte, alatta és mindkét oldalán.<br>
+<br>
+A HomeSecurity&#8482; Orb két, együtt működő módszerrel oldja meg ezeket a problémákat:<br>
+<br>
+<ol>
+  <li><span style="font-weight: bold;"></span>Az első módszer parancsokból áll, amelyekkel
+megmondhatod a HS Orb-nak, milyen magasan van fölötte a tetőd, és milyen mélyen alatta
+a padlód. Ezek a parancsok: <br>
+    <br>
+    <span style="color: rgb(51, 204, 0);">/8up=<span style="font-style: italic;">szám</span> </span>(ahol a szám 0.0-nál nagyobb)<br>
+    <br>
+és<br>
+    <br>
+    <span style="color: rgb(51, 204, 0);">/8down=<span style="font-style: italic;">szám</span> </span>(ahol a szám 0.0-nál nagyobb)<br>
+    <br>
+A <span style="font-style: italic;">szám</span> bármi lehet,
+tizedesponttal is.<br>Az Orb támadási hatótávolságának "ThisLand"-nek kell lennie.<br>
+    <br>
+    <br>
+
+
+  </li>
+  <li><span style="font-weight: bold;"></span>A második módszer arra szolgál,
+hogy megmondd a HS Orb-nak, hol vannak a lakás külső falai.
+Ahelyett, hogy koordinátákat használnánk, amelyek nagyon technikaiak és zavaróak lehetnek,
+vagy extra primeket igényelnének, az Orb a földhatárokat használja. Ez azt jelenti,
+hogy minden lakásoszlopnak külön földön kell lennie. Lásd az alábbi ábrát
+példaként.<br>
+    <br>
+    <div style="text-align: center;"><img style="width: 512px; height: 512px;" alt="HSOrb lakások" src="images/hsorbapartments.jpg">
+    </div>
+    <br>
+Miután minden oszlopnak saját, egyedi földneve van, a HS Orb-on be kell kapcsolni az
+"Other Land Safe" beállítást. Ezt a normál beállítás során, vagy a
+SETTINGS / Weapon / OtherLand menüpontban teheted meg.<br>
+    <br>
+    <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: middle; width: 1%;"><img style="width: 40px; height: 36px;" alt="Figyelmeztetés:" src="images/warn40px.png"><br>
+          </td>
+          <td style="vertical-align: top;"><span style="color: red; font-style: italic;">Minden
+Orb-nak 20 méternél nagyobb távolságra kell lennie egymástól, különben a menük mindegyik, 20 méteren belüli
+HS Orb-tól megjelennek. Ha a HS Orb-okat nem lehet 20 méternél nagyobb távolságra elhelyezni,
+állíts be minden egyes, 20 méteren belüli HS Orb-nak eltérő csatornát.
+Ezt a </span><span style="color: red; font-weight: bold;">HomeSecurity Channel</span><span style="color: red; font-style: italic;"> notecard szerkesztésével teheted meg a HS Orb-on belül, a </span><span style="color: rgb(51, 102, 255);">channel=8</span><span style="color: red; font-style: italic;"> érték megváltoztatásával. Minden, 20 méteren belüli HS Orb-nak eltérő számra van szüksége.</span><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </li>
+</ol>
+<br>
+
+
+<div style="text-align: center;"><small style="color: rgb(51, 51, 51);"><small><a href="index-hu.html">Tartalomjegyzék</a></small></small><br>
+<small style="color: rgb(51, 51, 51);"><small>
+Ez a dokumentum közkincs (Public Domain)</small></small><br><small style="color: rgb(51, 51, 51);"><small>Psyke's Defense Systems®, a PDS Dagger logó és a PDS HomeSecurity&#8482; a Psyke Phaeton védjegyei vagy bejegyzett védjegyei.</small></small></div>
+</body></html>

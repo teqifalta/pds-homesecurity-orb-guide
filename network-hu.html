@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr" lang="hu"><head>
+
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>PDS - HomeSecurity Orb - Hálózat</title>
+
+
+  <meta content="Psyke Phaeton" name="author">
+
+
+  <meta content="HomeSecurity Orb Dokumentáció" name="description">
+
+
+  <link rel="stylesheet" href="psykes.css" type="text/css" title="Dark">
+
+
+  <link rel="alternate stylesheet" href="bright.css" type="text/css" title="Bright"></head><body alink="#ff6600" link="#ff6600" vlink="#ff6600">
+<table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; width: 33%; white-space: nowrap;"><small><a href="/">Kezdőlap</a> &gt; <a href="index-hu.html">HSOrb
+Dokumentáció</a> &gt; <span style="color: rgb(255, 102, 0);">Hálózat</span></small></td>
+      <td style="vertical-align: top; width: 33%; white-space: nowrap; text-align: center;"><small><span style="font-family: Times New Roman,Times,serif; color: rgb(255, 102, 0);">PSYKE'S
+DEFENSE SYSTEMS</span><span style="color: rgb(255, 102, 0);">®</span></small><br>
+      </td>
+      <td style="vertical-align: top; width: 33%; white-space: nowrap; text-align: right; color: rgb(255, 102, 0);"><small><a href="/">Bolt</a></small></td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: right;"><small><a href="network.html">English version</a></small></div>
+
+<h1>PDS HomeSecurity<small>&#8482;</small> Orb Dokumentáció</h1>
+
+<h2>13+ verzió: HS Orb-ok hálózatba kötése</h2>
+
+&gt; <a href="#Introduction">Bevezetés</a><br>
+&gt; <a href="#A_Simple_Example">Egy egyszerű példa</a><br>
+&gt; <a href="#A_More_Complex_Example">Egy összetettebb példa</a><br>
+&gt; <a href="#Command_Paths">Parancsútvonalak</a><br>
+&gt; <a href="#Multiple_Region_Setup">Több régiós beállítás</a><br>
+&gt; <a href="#Notes">Megjegyzések</a><br>
+<br>
+<h3><a name="Introduction_"></a>Bevezetés</h3>
+
+
+<h4><img style="width: 40px; height: 36px;" alt="Megjegyzés:" src="images/warn40px.png" align="middle"> A 13-as vagy újabb HS Orb verziót igényli
+</h4>
+
+<br>A 13-as verziótól kezdve egyetlen HS Orb képes figyelni:<br>
+<ul>
+  <li>a jelenlegi földparcellát, méretétől függetlenül. <span style="color: rgb(102, 102, 102);">(Hatótávolság: "ThisLand")</span><br>
+  </li>
+  <li>a régióban a jelenlegi föld tulajdonosához tartozó összes földet. Függetlenül attól, hogy azok a parcellák hol vannak a régión belül. <span style="color: rgb(102, 102, 102);">(Hatótávolság: "LandOwner's")</span><br>
+  </li>
+  <li>a teljes régiót. <span style="color: rgb(102, 102, 102);">(Hatótávolság: "Region")</span><br>
+  </li>
+</ul>
+Ezért a legtöbb embernek valószínűleg nem lesz szüksége egynél több HS Orb-ra.
+
+Ezek az utasítások haladó felhasználóknak szólnak, és a legtöbb embernek
+nem lesz rájuk szüksége.<br>
+<br><br>
+A HS Orb képes eszközök hálózatába integrálódni,
+és bizonyos parancsokra közösen reagálni.<br>
+
+<br>
+
+Bármely HS Orb, amely 20 méteren belül van egy másik HS Orb-nak, azt eredményezi, hogy 2 menüablak
+jelenik meg a HS kezelőjének. Ezt nem tudom kijavítani, ez az SL dialógusmenük természetéből fakad.<br>
+
+<br>
+
+A hálózat működése úgy zajlik, hogy minden HS rendszer <span style="font-style: italic;">llRegionSaying</span>
+üzenetet küld a többinek egy rejtett csatornán<sup><span style="color: rgb(51, 204, 255);">1</span></sup>, ami a
+normál chatben nem látszik.<br>
+
+<br>
+
+<sup style="color: rgb(51, 204, 255);">1</sup> <small><span style="color: rgb(102, 102, 102);">A csatornát a
+'HomeSecurity Channel' notecardban a</span> <span style="color: rgb(51, 204, 255);">channel=<span style="font-style: italic;">szám</span></span> <span style="color: rgb(102, 102, 102);">beállítás adja meg (ahol a</span> <span style="color: rgb(51, 204, 255); font-style: italic;">szám</span> <span style="color: rgb(102, 102, 102);">egy egész szám); a
+hálózat összes eszközének ugyanazon a csatornán kell lennie. Alapértelmezett csatorna: 8.</span></small><br>
+
+<br>
+
+Minden HS Orb beállítható, hogy fogadja a más HS rendszerektől vagy HS relay-ektől
+kapott, továbbított parancsokat, amennyiben azok ugyanabban a régióban vannak
+(és a régióhatáron át 100 méteren belül vannak az Orb-tól). <br>
+
+<br>
+
+Minden HS Orb-nak meg kell mondani, mely eszközöktől fogadjon el ilyen parancsokat, biztonsági okokból.
+A Second Life minden objektumának van egy egyedi UUID Key-je, ezt használjuk a HSID létrehozásához.
+A HSID-t azután arra használjuk, hogy azonosítsuk, mely más objektumok küldhetnek parancsot ennek az objektumnak.<br>
+
+<br>
+
+<img style="width: 40px; height: 36px;" alt="Figyelmeztetés:" src="images/warn40px.png" align="middle"> <span style="color: red; font-style: italic;">4 294 967 296-hoz 1 az
+esélye egy duplikált HSID hálózati azonosítónak. Szóval figyelj erre!
+:)</span><br>
+
+<br>
+
+<img style="width: 40px; height: 36px;" alt="Figyelmeztetés:" src="images/warn40px.png" align="middle"> <span style="color: red; font-style: italic;">Ha a HS-t az inventorydba
+teszed, majd újra kiveszed, a HSID-je meg fog változni!</span><br>
+
+<br>
+
+A <span style="color: rgb(0, 153, 0);">/8hsid</span> parancs
+kiírja a HomeSecurity eszköz HSID-jét, így kimásolhatod a History-ból (Ctrl-H).<br>
+
+<br>
+
+A <span style="color: rgb(0, 153, 0);">/8hsid</span> parancs <span style="text-decoration: underline;">kiabálva (shout)</span> is használható más HomeSecurity rendszerek felderítésére 100 méteren belül.<br>
+
+<br>A HS Orb 11.043-as verziótól kezdve megjeleníti a HSID-t a Settings menüben.
+2-es Viewer-rel ki is jelölheted és kimásolhatod. Jó módszer egy távoli HS Orb HSID-jének átvételéhez.<br>
+<br>
+A <span style="color: rgb(0, 153, 0);">/8addn <span style="font-style: italic;">HSID</span> </span>paranccsal (ahol a <span style="font-style: italic; color: rgb(0, 153, 0);">HSID</span> a
+másik Orb HSID kulcsa) hozzáadhatsz egy eszközt, amely parancsokat továbbíthat ennek
+az eszköznek. Ügyelj rá, hogy más HS Orb-ok ne hallják a parancsodat!<br>
+
+<br>
+
+Alternatívaként a Settings notecard <span style="color: rgb(51, 204, 255);">network=<span style="font-style: italic;">HSID</span></span> <span style="color: rgb(0, 153, 0);"></span>(ahol a <span style="font-style: italic; color: rgb(51, 204, 255);">HSID</span> a
+másik Orb HSID kulcsa) szekciójában hozzáadhatod azon eszközök HSID-jét, amelyektől ez a HS Orb
+parancsokat fogadhat, DE ez általában nem jó ötlet, hacsak nem szándékozod
+a notecard értékeire visszaállítani az Orb-ot a <span style="color: rgb(0, 153, 0);">/8reset</span>
+paranccsal.<br>
+
+<br>
+
+<h3><a name="A_Simple_Example"></a>Egy egyszerű példa
+</h3>
+
+<table style="text-align: left; width: 80%; margin-left: auto; margin-right: auto;" border="0" cellpadding="5" cellspacing="0">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="font-weight: bold; color: silver;">HS Orb</span><br>
+      </td>
+      <td colspan="1" rowspan="3" style="vertical-align: middle; width: 10%;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center; color: silver; background-color: rgb(51, 51, 51);"><span style="font-weight: bold;">HS Orb</span> </td>
+      <td colspan="1" rowspan="3" style="vertical-align: middle; width: 10%;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: center; font-weight: bold; color: silver; background-color: rgb(51, 51, 51);">HS
+Orb</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Saját HSID:</span><br>
+      <span style="color: rgb(255, 255, 102);">00000001</span></td>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Saját HSID:</span><br>
+      <span style="color: red;">00000002</span></td>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Saját HSID:</span><br>
+      <span style="color: rgb(153, 153, 255);">00000003</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Ezt hallgatja:</span><br>
+      <span style="color: red;">0000002</span></td>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Ezeket hallgatja:</span><br>
+      <span style="color: rgb(255, 255, 102);">00000001</span><br>
+      <span style="color: silver;">és</span><br>
+      <span style="color: rgb(153, 153, 255);">00000003</span></td>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(51, 51, 51);"><span style="color: silver;">Ezt hallgatja:</span><br>
+      <span style="color: red;">00000002</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h3><a name="A_More_Complex_Example"></a>Egy összetettebb példa (13+ verzió)<br>
+</h3>
+
+<div style="text-align: center;">Ez a példa csak akkor hasznos, ha egyes földparcelláidat védeni akarod a régióban, másokat pedig nem.<br>
+<br>
+<font size="-1"><span style="font-style: italic;">(Ha az ÖSSZES földparcelládat védeni akarnád a régióban, elég lenne
+1 HS Orb, bárhol elhelyezve a régióban, "Land Owner's" hatótávolsággal, és ennek az oldalnak a többi részét figyelmen kívül hagyhatod.</span>)</font><br>
+<br>
+<img style="width: 512px; height: 512px;" alt="Néhány parcella példa" src="images/hsorbv13_1region.jpg"><br>
+
+</div>
+A fenti képen látható példában három földparcellát véd hálózatba kötött HS Orb, míg a negyedik parcellát nem.<br>
+
+<br>
+<br>
+Ebben a beállításban az HS #1 opcionálisan úgy lenne beállítva, hogy
+a #2-t és #3-at hallgatja, a #2 és #3 pedig
+a #1-et hallgatja. Nincs előnye annak, ha minden eszköz minden másikat
+hallgat. A legjobb egy 'láncszem' szerű elrendezés, ahol az eszközök egymásnak továbbítják az üzeneteket.<br id="jipa">
+
+<br id="pgdu">
+
+A HS Orb-ok képesek megállapítani, ha egy adott parancsot már korábban láttak,
+és csendben elutasítják azt, ha az visszakerül hozzájuk.
+Ez megakadályozza a visszacsatolási hurkokat (feedback loop) a hálózatban.<br id="h790">
+
+<br>
+
+<h3><a name="Command_Paths"></a>Parancsútvonalak</h3>
+
+<table style="text-align: left; width: 100%;" border="0" cellpadding="0" cellspacing="5">
+
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; text-align: center;"><img style="width: 40px; height: 36px;" alt="Figyelmeztetés:" src="images/warn40px.png"> <br>
+      </td>
+      <td style="vertical-align: top; color: red; font-style: italic;">Ha 24-nél több HS Orb-ot és HS
+Relay rendszert kötsz össze egyetlen útvonalon,
+az egy vagy több
+HS rendszer kimaradásához vezethet a parancsok fogadásából.<br>
+      <small style="color: rgb(102, 102, 102);">(Minden továbbított parancshoz
+hozzá van fűzve azon HS rendszerek és
+Relay rendszerek HSID-je, amelyek már látták a parancsot. Ha a
+továbbított üzenet hosszabb lesz, mint 255 karakter, a parancs
+törlődik a hálózatból.)</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+Példák egy útvonalra:<br>
+
+<br>
+
+<div style="text-align: center;"><img style="width: 512px; height: 512px;" alt="HSOrb parancsútvonalak" src="images/hsorbpaths.jpg">
+</div>
+
+<br>
+
+<h3><a name="Multiple_Region_Setup"></a>Több régiós beállítás</h3>
+
+
+<div style="text-align: center;"><img style="width: 512px; height: 256px;" alt="Több régió" src="images/hsorbv13_multipleregions.jpg">
+</div>
+
+<br>
+
+A fenti beállításban 2 régió, egyenként 1 HS Orb-bal, van összekötve hálózatban.
+A két Orb-nak 100 méteren belül kell lennie egymáshoz.<br>
+
+<h3><a name="Notes"></a>Megjegyzések
+</h3>
+A PDS Shopban is elérhetőek ( <small><small><a href="http://slurl.com/secondlife/Shipley/48/234/44"><img style="border: 0px solid ; width: 34px; height: 20px;" alt="InSL" src="images/insl_logo_tiny.png" align="top"></a></small></small> <a href="http://slurl.com/secondlife/Shipley/48/234/44">http://slurl.com/secondlife/Shipley/48/234/44</a>
+) a "HomeSecurity RemoteDisplays" és más kiegészítők, amelyekkel megnézheted,
+ki van bármelyik HS Orb-od hatótávolságán belül, ugyanabból a szimulátorból, bárhonnan.<br>
+
+<br>
+
+<div style="text-align: center;"><small style="color: rgb(51, 51, 51);"><small><a href="index-hu.html">Tartalomjegyzék</a></small></small><br>
+<small style="color: rgb(51, 51, 51);"><small>
+Ez a dokumentum közkincs (Public Domain)</small></small>
+<br><small style="color: rgb(51, 51, 51);"><small>Psyke's Defense Systems®,
+a PDS Dagger logó és a PDS HomeSecurity&#8482; a Psyke Phaeton védjegyei vagy bejegyzett
+védjegyei.</small></small>
+</div>
+
+</body></html>
