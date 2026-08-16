@@ -1,6 +1,6 @@
 /* public domain */
 html {
-  background-color: #202020;
+  background-color: #121212;
 }
 body {
   border: none;
@@ -15,9 +15,9 @@ body {
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #2b2b2b;
+  background-color: #1c1c1c;
   color: #a3a3a3;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
 }
 a {
   color: #7fa8c9;
@@ -50,7 +50,7 @@ h2 {
   font-size: 1.25em;
   font-weight: 600;
   color: #d0d0d0;
-  background-color: #333333;
+  background-color: #262626;
   padding: 8px 14px;
   margin-top: 20px;
   margin-bottom: 12px;
@@ -96,9 +96,9 @@ td, th {
 }
 pre, textarea {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  background-color: #202020 !important;
+  background-color: #141414 !important;
   color: #a3a3a3 !important;
-  border: 1px solid #444444;
+  border: 1px solid #3a3a3a;
   border-radius: 6px;
   padding: 10px;
 }
@@ -114,6 +114,6 @@ pre, textarea {
   color: #808080 !important;
 }
 [style*="background-color: rgb(26, 26, 26)"] {
-  background-color: #222222 !important;
+  background-color: #171717 !important;
   border-radius: 4px;
 }
