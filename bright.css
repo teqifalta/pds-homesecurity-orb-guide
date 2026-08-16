@@ -1,6 +1,6 @@
 /* public domain */
 html {
-  background-color: #1c2126;
+  background-color: #1c1c1c;
 }
 body {
   border: none;
@@ -15,26 +15,26 @@ body {
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #263238;
-  color: #d8d8d8;
+  background-color: #262a2d;
+  color: #a3a3a3;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 a {
-  color: #ffa940;
+  color: #7fa8c9;
   text-decoration: none;
 }
 a:hover {
-  color: #ffc27a;
+  color: #a3c6e0;
   text-decoration: underline;
 }
 h1 {
   border-style: none;
-  border-bottom: 2px solid #ff6600;
+  border-bottom: 1px solid #4d4d4d;
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-align: center;
-  color: #ffb266;
+  color: #e0e0e0;
   padding-bottom: 14px;
   padding-top: 14px;
   margin-top: 4px;
@@ -44,13 +44,13 @@ h1 {
 h2 {
   border-style: none;
   border-radius: 6px;
-  border-left: 4px solid #ff6600;
+  border-left: 4px solid #5a5a5a;
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-align: left;
   font-size: 1.25em;
   font-weight: 600;
-  color: #ffd699;
-  background-color: #2e3b42;
+  color: #d0d0d0;
+  background-color: #2e3235;
   padding: 8px 14px;
   margin-top: 20px;
   margin-bottom: 12px;
@@ -60,16 +60,16 @@ h3 {
   font-style: normal;
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 600;
-  color: #ffcb66;
+  color: #c2c2c2;
   background-color: transparent;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: #3d4a52;
+  border-bottom-color: #444444;
   margin-top: 26px;
 }
 h4 {
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #ff8080;
+  color: #d98080;
   font-weight: 500;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -78,15 +78,15 @@ h4 {
 }
 h5 {
   font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #b3b3b3;
+  color: #999999;
   font-weight: 400;
 }
 small {
-  color: #b3b3b3;
+  color: #949494;
 }
 hr {
   border: none;
-  border-top: 1px solid #3d4a52;
+  border-top: 1px solid #444444;
 }
 table {
   border-collapse: separate;
@@ -97,29 +97,29 @@ td, th {
 }
 pre, textarea {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  background-color: #1c2126 !important;
-  color: #cccccc !important;
-  border: 1px solid #3d4a52;
+  background-color: #1c1c1c !important;
+  color: #a3a3a3 !important;
+  border: 1px solid #444444;
   border-radius: 6px;
   padding: 10px;
 }
 
-/* Any text authored as plain black in the original markup is replaced with a soft
-   light grey so it stays legible against this theme's dark background. Pure-white
-   inline text and the faint rgb(51,51,51) footer watermark are softened the same
-   way as in psykes.css. Colour-coded legend entries (green/red/yellow/blue Orb
-   status colours) are intentionally left untouched since they document the
-   product's actual on-screen colours. */
+/* Any text authored as plain black in the original markup is replaced with a muted
+   grey so it stays legible against this theme's dark background. Pure-white inline
+   text and the faint rgb(51,51,51) footer watermark are softened the same way as in
+   psykes.css. Colour-coded legend entries (green/red/yellow/blue Orb status colours)
+   are intentionally left untouched since they document the product's actual
+   on-screen colours. */
 [style*="color: black"] {
-  color: #d8d8d8 !important;
+  color: #a3a3a3 !important;
 }
 [style*="color: white"] {
-  color: #e6e6e6 !important;
+  color: #b0b0b0 !important;
 }
 [style*="color: rgb(51, 51, 51)"] {
-  color: #999999 !important;
+  color: #808080 !important;
 }
 [style*="background-color: rgb(26, 26, 26)"] {
-  background-color: #1c2126 !important;
+  background-color: #1c1c1c !important;
   border-radius: 4px;
 }
