@@ -1,53 +1,119 @@
 /* public domain */
+html {
+  background-color: #262626;
+}
 body {
-  border: 1px solid #ff6600;
-  width: 900px;
+  border: none;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 92%;
   margin-left: auto;
-  padding-left: 10px;
-  font-family: Arial,Helvetica,sans-serif;
   margin-right: auto;
-  padding-right: 10px;
-  font-size: medium;
-  background-color: black;
-  color: silver;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 8px 28px 28px 28px;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #333333;
+  color: #d6d6d6;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+a {
+  color: #ff9900;
+  text-decoration: none;
+}
+a:hover {
+  color: #ffb84d;
+  text-decoration: underline;
 }
 h1 {
-  border-style: solid;
-  border-width: 1px;
-  font-family: "Times New Roman",Times,serif;
-  font-weight: bold;
+  border-style: none;
+  border-bottom: 2px solid #ff6600;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-align: center;
-  color: #ff9900;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  background-color: #1e1e1e;
-  font-size: 1.3em;
+  color: #ffb266;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  margin-top: 4px;
+  background-color: transparent;
+  font-size: 1.6em;
 }
 h2 {
   border-style: none;
-  font-family: "Courier New",Courier,monospace;
-  text-align: center;
-  font-size: 1.4em;
-  color: #ff6600;
-  background-color: #333333;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-weight: bold;
+  border-radius: 6px;
+  border-left: 4px solid #ff6600;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-align: left;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #ffd699;
+  background-color: #3d3d3d;
+  padding: 8px 14px;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 h3 {
-  font-family: "Times New Roman",Times,serif;
-  font-weight: normal;
-  color: #ffcb14;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #ffcb66;
   font-style: normal;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  border-bottom-color: #4d4d4d;
+  padding-bottom: 4px;
+  margin-top: 26px;
 }
 h4 {
-  font-family: Arial,Helvetica,sans-serif;
-  color: red;
-  font-weight: normal;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #ff8080;
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 8px;
   font-style: italic;
   text-align: center;
+}
+h5 {
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #bfbfbf;
+  font-weight: 400;
+}
+small {
+  color: #bfbfbf;
+}
+hr {
+  border: none;
+  border-top: 1px solid #4d4d4d;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 2px;
+}
+td, th {
+  padding: 5px 8px;
+}
+pre, textarea {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: #262626 !important;
+  color: #cccccc !important;
+  border: 1px solid #4d4d4d;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Soften pure-white and near-invisible inline text colours from the original markup
+   so the site reads comfortably on the new #333333 background. Colour-coded legend
+   entries (green/red/yellow/blue Orb status colours) are intentionally left untouched
+   since they document the product's actual on-screen colours. */
+[style*="color: white"] {
+  color: #e6e6e6 !important;
+}
+[style*="color: rgb(51, 51, 51)"] {
+  color: #999999 !important;
+}
+[style*="background-color: rgb(26, 26, 26)"] {
+  background-color: #262626 !important;
+  border-radius: 4px;
 }
